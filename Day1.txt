@@ -1,0 +1,262 @@
+
+
+
+		Java Programming Language
+
+		Language 
+		   |
+		purpose ? 
+	
+	how to start learning a language
+
+		listen		speak		read		write
+		|		|		|		|
+		concepts	concepts	concepts	programs
+		interaction/instrospection	+programs
+
+
+Quality of your attention and intention would decide the quality of the training
+
+
+				Java Technology
+					|
+		--------------------------------------------------
+		|			|			|
+		JSE			JEE			JME
+		Standard		Enterprise		Micro
+		|Core Java		|main Business
+	*Language fundamentals		|
+	*Classes and Objects	------------------------------------
+	*Constructor		|		|		|
+	*OOPS concepts		Session		Entity 		Message
+	*packages		  |Spring	|ORM		   |	
+	*exception handling   M1<--->M2,3,4..	-------------	SMS Mail Whatsapp
+	*multithreading	      |	     ||||||	|	|
+	Annotations	   Server  clients	BMP	CMP	
+	Reflection		|		Bean	 jdbc queries are automated
+	X file i/o	----------------	Managed
+	->JDBC		|		|	Persistence -> store Object on DB
+	|		stateless	statefull	jdbcs queries are manually
+	Adv Java					handled
+	|		airindia.com	book ticket	select/insert/update/delete
+	Socket programming
+	RMI
+			bookmyshow.com/app
+
+
+
+	0. Simple, no pointers, no need of any h/w background
+		no memory management, legacy syntax from C++
+	1. WORA/platform neutral
+		write once run anywhere
+	2. OOPS
+	3. Multithreaded - download, upload, print, spell checking, calcs
+
+	4. Robust - automatic garbage collection, exception handling
+	5. Secured - 100%, runs in a sandbox - it does not allow DMA
+	6. Dynamic - Account accObj = new Account();
+				accObj = new SavingsAccount();
+				accObj = new CurrentAccount();
+
+	7. Distributed   - Server		Client
+			  A.class		B.class
+
+			1		2		3	4	5
+	Vendor	    Intel		Sun		IBM	HP	Apple
+	|		|		|		|	|	|
+	CPU	       x86		SPARC		BB	hps	PowerPC/M1
+	|		|		|		|	|	|
+	OS	    MS-Windows		Solaris		AIX	hpUX	Macintosh
+			|		|		|	|	|
+	Compiler  TC++/BC/MSVisual	cc		cc	cc	cc
+			|  Studio	|		|	|	|
+	Source	---Abc.cpp ---copy-->	Abc.cpp		Abc.cpp .cpp	.cpp
+	|		|		|		|	|	|
+	Compile ---Abc.obj		Abc.o		Abc.o	Abc.o	Abc.o
+	|		|		|same as obj	|	|	|
+	Linker	   Abc.exe	   	Abc.out		Abc.out	Abc.out	Abc.out
+	|		|		|same as exe		
+	Run it     Running	  Running		Running	Running	Running
+
+
+	JDK - Java development kit
+			C:\program files\Java\jdk1.8.xxx> <== JDK 
+
+		javac -- java compiler
+		java  -- java interpreter
+
+	JRE - Java runtime environment - minimum environment to run the .class file
+
+
+	Server
+	|.class files are sent to the browser
+	|
+	|
+	Browser [ JRE enabled ] -java.exe must be there to help the browser
+			to run the .class files
+
+		
+
+	JVM - java Virtual machine to run your code
+
+		JIT		Byte code
+		Compiler ------	Verifier
+				|
+				|Class Loader
+				|
+				Execution Engine 
+				|  Runtime environment
+				|
+				Garbage Collector
+				   unused objects are declared/marked as garbage
+					
+	First Code of JPL
+
+	-------------------------
+	Minimum unit of JPL is to write a class
+
+
+	First.java
+	-----------
+	class First <-- First.class would be generated
+	{ <--- Start
+		public static void main(String args[])
+		{
+			System.out.println("Hello World of Java");
+		}
+	}  <-- End
+
+
+	javac First.java <-- compilation
+		|
+		what will it generate???? class file(s)
+		what would be the name of the class file(s)
+		ANS: as per the classes declared in the source code
+
+	
+	First.java (Source Code)
+		|
+		javac
+		|
+		First.class (Byte code)
+		|
+	java First (without extension )
+
+
+
+
+
+Every public class MUST be stored in its OWN file (.java file)
+
+
+
+
+Naming convention
+
+
+	ClassName : DriverManager, SystemSettings, DeviceDriver
+
+	fieldName : rollNumber, socialSecurityNumber, employeeNumber
+
+	methodName : setLookAndFeel(), withdraw(), transferFunds()
+
+	CONSTANT   : MAX, MIN, SPEED_OF_LIGHT, GRAVITY_OF_EARTH
+
+	packages   : com.kpit.usa, com.kpit.uk
+
+----------------------------------------------------------
+
+	Classes			vs			Objects
+
+   design of an object*				instance of a class*
+
+   a simple logical design			a concrete physical appearance
+						in the computer memory
+
+   blue print of a house			a real house!!!			
+   made on a paper with				as many as you can create
+   pencil/scale/stencil
+
+   field + methods				the real field, the real method
+   desinged in a container			code is loaded in the memory
+   called as class				to execute 
+   as a textual design
+
+   class SavingsAccount				SavingsAccount savObj1;
+   {						//its a reference to SavingsAccount
+	//STATE/FIELDS/NOUN
+	private int accountNumber;		savObj1 = new SavingsAccount();
+	private String accHolder;			  |	 |	
+	private float balance;			   Allocator	its a constructor
+						  to create 	to initialize the
+	//METHODS/ACTIONS/VERB			  the fields	fields
+	void withdraw(float amt){ 
+		balance -= amt;
+	}
+	void deposit(float amt) {
+		balance +=amt;
+	}
+   }
+
+
+	SavingsAccount savObj1 = new SavingsAccount();
+	SavingsAccount savObj2 = new SavingsAccount();
+	SavingsAccount savObj3 = new SavingsAccount();
+
+
+
+		STACK					HEAP
+		|					|
+		| (local values)			|(free store)
+		|					|
+						<------FIELDs of SavingsAccount->
+						accountNumber accHolder balance
+						---------------------------------
+						|	     |         |        |
+						---------------------------------
+		+---------------------------->  100
+		|
+		100  <-- value of savObj1		METHODS of SavingsAccount
+		savObj1
+							SavingsAccount()
+							withdraw(), deposit()
+
+						<------FIELDs of SavingsAccount->
+						accountNumber accHolder balance
+						---------------------------------
+						|	     |         |        |
+						---------------------------------
+		+---------------------------->  200
+		|
+		200  <-- value of savObj1		
+		savObj2
+
+
+
+						<------FIELDs of SavingsAccount->
+						accountNumber accHolder balance
+						---------------------------------
+						|	     |         |        |
+						---------------------------------
+		+---------------------------->  300
+		|
+		300  <-- value of savObj1		
+		savObj3
+
+
+
+	
+
+		savObj1.withdraw();
+		savObj2.withdraw();
+		savObj3.withraw();
+
+
+
+
+
+
+
+
+
+
