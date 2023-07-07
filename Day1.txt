@@ -163,6 +163,9 @@ Naming convention
 	CONSTANT   : MAX, MIN, SPEED_OF_LIGHT, GRAVITY_OF_EARTH
 
 	packages   : com.kpit.usa, com.kpit.uk
+				no spaces in packages ( becuase directories can have spaces)
+
+				"new york"
 
 ----------------------------------------------------------
 
@@ -253,6 +256,114 @@ Naming convention
 
 
 
+
+
+	is "sachin tedulkar " a class or an object?
+
+	it is neither the class nor the object
+	rather it is an attribute of the object
+
+
+
+	class Cricketer
+	{
+		int rank;
+		String cricketerName;
+		int age;
+		int score;
+
+	}
+
+
+	Cricketer crickObj1 = new Cricketer();
+		crickObj1.setDetails(1,"Sachin Tedulkar",14,500);
+
+
+
+	Arrays
+	-------
+
+		group of variables
+		of similar data types
+		stored in consecutive memory location
+		referred by a common name
+
+		limitation of an array
+			- cannot grow at runtime
+			- cannot shrink at runtime
+			
+
+
+	Arrays of Objects
+	--------------------
+
+		same way as of the primitives
+
+
+
+	Packages
+	---------
+
+		packages = directories
+		|		|
+		java		operating system
+				|
+				to organize files and folders
+					    |		 |
+					.class 		packages
+
+
+main-package			jungle
+				|
+		---------------------------------
+sub		|	|	|	|
+packages	cave	tree	house	river
+		|	|	|	   |
+classes		Tiger	Bird	FarmHouse Fish
+		Lion	Nest	Cat	  Frog
+
+		
+	Strongest	Stronger      Strong			Weakest
+	private		default	      protected			public	
+
+	1. public - available throughout the project/internet
+	2. private - only within the class where they are declared
+			not available even to the sub class to refer
+ 
+	3. protected - sub class can refer it, within same package(BengalTiger)
+		       sub class can refer it via extends  , outside package (WhiteTiger)
+		       sub class cannot refer it via the reference of Tiger (t.protectedB) error
+
+		      non-sub class can refer, within same package(Bear)
+		      non-sub class cannot refer, outside package (Monkey)
+
+		
+
+	4.          default <-- there is no such keyword as default
+				"same package" 
+			only available in the same package to sub-class(BengalTiger)/non-subclass(bear)
+
+			sub-class cannot refer it, outside package (WhiteTiger)
+			non-sub class cannot refer it, outside package (Monkey)
+
+
+
+
+innovate your own hierarchy of classes like the above example
+and try all the four access specifiers
+with package, import statements
+alongwith public,protected, private, default via sub-classes/non-subclasses
+
+				lecture	5%
+				reading	10%
+				audio/visual 20%
+				demo 30%
+				gd 50%
+				practice 75%
+				teach it to others 90%
+
+
+Teach to others
 
 
 
