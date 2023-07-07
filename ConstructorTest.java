@@ -1,14 +1,19 @@
 
 public class ConstructorTest {
 	public static void main(String[] args) {
-		Flight flightObj1 = new Flight(100,"Air India","Mumbai","London"); 
+		Flight flightObj1 = new Flight(100,"Air India","Mumbai","Paris"); 
 		//flightObj1.setFlight(100,"Air India","Mumbai","London");
+		
+		/*flightObj1.flightNumber=-1000;
+		flightObj1.flightName="Any Airlines";
+		flightObj1.source="Zhumri";
+		flightObj1.destination="Talliya";*/
 		
 		flightObj1.showFlight();
 		
 		//flightObj1.setFlight(100, "Air india", "Mumbai", "Delhi");
 		
-		flightObj1.showFlight();
+		/*flightObj1.showFlight();
 		
 		Flight flightObj2 = new Flight(200,"Air France","Mumbai","France");
 		Flight flightObj3 = new Flight(300,"Air America","Mumbai","New York");
@@ -20,17 +25,17 @@ public class ConstructorTest {
 		flightObj3.showFlight();
 		flightObj4.showFlight();
 		flightObj5.showFlight();
-		
+		*/
 		
 	}
 }
 
 class Flight
 {
-	int flightNumber; //DATA
-    String flightName;
-    String source;
-    String destination;
+	private int flightNumber; //DATA
+	private String flightName;
+	private String source;
+	private String destination;
 
     void fly() { 
     	System.out.println(" Flight is flying....");
@@ -44,9 +49,9 @@ class Flight
     //implicit no-arg constructor
     //Flight() { }
     
-  /*  Flight() { 
+    Flight() { //explicit no-arg ctor
     	System.out.println("Flight() invoked...");
-    }*/
+    }
     
     //explicit constructor
     //parameterized constructor
@@ -56,11 +61,67 @@ class Flight
     }*/
     
     public Flight(int flightNumber, String flightName, String source, String destination) {
-		super();
-		this.flightNumber = flightNumber;
-		this.flightName = flightName;
-		this.source = source;
-		this.destination = destination;
+
+    	System.out.println("> STARTING Constructor....");
+		System.out.println("Checking flight number");
+
+		if(flightNumber < 0) {
+			//System.out.println("Flight Number cannot be in negative...");
+			throw new RuntimeException("Flight Number cannot be in negative...");
+		}
+		else {
+			System.out.println("Setting flight number....");
+			this.flightNumber = flightNumber;			
+		}
+		
+		System.out.println("Checking flight name");
+
+		if(flightName.equalsIgnoreCase("Air India") || 
+				flightName.equalsIgnoreCase("Air France") || 		
+				flightName.equalsIgnoreCase("Air America") || 		
+				flightName.equalsIgnoreCase("Lufthansa") || 		
+				flightName.equalsIgnoreCase("British Airways")) {
+			
+			System.out.println("Setting flight name");
+
+			this.flightName = flightName;
+					
+		}
+		else {
+			//System.out.println("Invalid flight Name");
+			throw new RuntimeException("Invalid flight name..."); //stop the constructor here, and terminate the application
+		}
+		
+		
+		System.out.println("Checking flight source");
+
+		if(source.equalsIgnoreCase("Mumbai")) {
+			System.out.println("Setting flight source");
+
+			this.source = source;
+
+		}else {
+			//System.out.println("Source must be Mumbai");
+			throw new RuntimeException("Source must be Mumbai");
+		}
+		
+		System.out.println("Checking flight destination");
+
+		if(destination.equalsIgnoreCase("London") ||
+				destination.equalsIgnoreCase("New York") ||
+				destination.equalsIgnoreCase("Paris") ||
+				destination.equalsIgnoreCase("Germany") ||
+				destination.equalsIgnoreCase("New Jersey")) {
+			System.out.println("Setting flight destination");
+
+			this.destination = destination;
+
+		} else {
+			//System.out.println("Invalid flight destination....");
+			throw new RuntimeException("Invalid flight destination");
+		}
+    	System.out.println("> FINISHING Constructor....");
+
 	}
     
   
