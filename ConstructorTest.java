@@ -1,7 +1,21 @@
 
 public class ConstructorTest {
 	public static void main(String[] args) {
-		Flight flightObj1 = new Flight(100,"Air India","Mumbai","Paris"); 
+		
+		Flight flightObj1 = null;
+		
+		try {
+			flightObj1 = new Flight(-100,"Air India","Mumbai","Paris"); 
+			flightObj1.showFlight();
+
+		}
+		catch(RuntimeException e) {
+			System.out.println("Problem : "+e);
+		}
+		finally {
+			System.out.println("flightObj1: "+flightObj1);
+
+		}
 		//flightObj1.setFlight(100,"Air India","Mumbai","London");
 		
 		/*flightObj1.flightNumber=-1000;
@@ -9,7 +23,6 @@ public class ConstructorTest {
 		flightObj1.source="Zhumri";
 		flightObj1.destination="Talliya";*/
 		
-		flightObj1.showFlight();
 		
 		//flightObj1.setFlight(100, "Air india", "Mumbai", "Delhi");
 		
@@ -66,8 +79,10 @@ class Flight
 		System.out.println("Checking flight number");
 
 		if(flightNumber < 0) {
-			//System.out.println("Flight Number cannot be in negative...");
+			System.out.println("Flight Number cannot be in negative...");
+			
 			throw new RuntimeException("Flight Number cannot be in negative...");
+			//return; //acting as completion and not termination 
 		}
 		else {
 			System.out.println("Setting flight number....");
@@ -119,9 +134,11 @@ class Flight
 		} else {
 			//System.out.println("Invalid flight destination....");
 			throw new RuntimeException("Invalid flight destination");
+			//return; // return as 0, 0 means success
 		}
     	System.out.println("> FINISHING Constructor....");
 
+    	//return 0;
 	}
     
   
@@ -150,3 +167,14 @@ class Flight
     
 
 }
+
+/*
+ * 
+ 
+ 	void fun() {
+ 		
+ 		
+ 	}
+ 
+ * 
+ */
