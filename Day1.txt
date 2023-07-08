@@ -509,19 +509,19 @@ Teach to others
 			  ------------------------	Flowring NonFlowering	Marble	Steel <-- proton (is not dead)
 			  |			 |	   |		|	 	
 			Mammal			Bird     Rose		Cactus
-			  |giveBirth()		|layEggs()
+			  |giveBirth() -isA	|layEggs()
 		--------------------------	---------------
 			|5		|		|
 			Human		Tiger		Parrot
-			  |
+			  |isA
 			Person <-- as a regular personality
-			|
+			|isA
 		---------------
 		|
 		Student <--u are here at college/school time
-		|
+		|isA
 	--------------
-	|
+	|isA
 	Employee <-- u are here - most specialized
 
 	Single Level
@@ -592,7 +592,219 @@ Teach to others
 	super. - refers to the nearest super class data or function if they are accessible
 		NO SUCH RULE OF SEQUENCE FOR SUPER.
 
+
+	isA  relationship - Aggregation 
+
 	
+
+	hasA Relationship - Composition
+	
+		"whole entity" consist of muliptle "part entities" that vital to its
+		existence
+
+
+
+
+	class Wheel { }
+	class Engine { }
+ 	class Vehicle { }
+
+	class Car extends Vehicle { //isA
+					//data type of Car is also Vehicle
+
+		Wheel wheel1 = new Wheel(); //hasA - vital
+		Wheel wheel2 = new Wheel();
+		Wheel wheel3 = new Wheel();
+		Wheel wheel4 = new Wheel();
+
+		Engine engine = new Engine(); //hasA - vital
+	}
+
+
+	class Heart
+	{
+		void pumping() {
+		}
+	}
+	clas Lung {
+	}
+	class Liver { }
+	class Human 
+	{
+		Heart myHeart = new Heart();
+		Lung leftLung = new Lung();
+		Lung rightLung = new Lung();
+		Liver liver = new Liver();
+
+	}
+
+	class HeatingCoil { }
+
+	class Microwave extends Machine {
+		HeatingCoil heatCoil = new HeatingCoil();
+
+	}
+
+
+
+
+	class Building 
+	{
+
+	}
+	class Area
+	{
+		Buildings buildings[]
+	}
+	class City
+	{
+		Area area[];
+	}
+
+	class State
+	{
+		City cities[];
+		
+	}
+
+	class Country
+	{
+		State state[];
+		..
+	}
+
+		
+
+		Passing object as an argument to a method
+		Returning Object as a return value from a method
+
+
+
+
+
+	if i want to make a lemon juice 
+
+	what is required
+
+
+	1. lemon
+		size,
+		color
+		qty
+		juicy or not
+		
+		
+	2. sugar
+		color
+		qty
+		type / organic or inorganic
+
+
+	3. water
+		qty
+		type | filtered | mineral | tap water
+		
+
+	4. Lemon Juice
+
+
+	Lemon - 1 lemon = 5 Rs
+	Sugar - 1 spoon - 2 Rs
+	Water - 250 ml - 5 rs
+	--------------------------
+			12 rs
+
+	if u order this lemon juice in a shop????
+	
+	50/60Rs - infrastructure cost!!! facility
+		- making facility!!!!-chef to make it
+		- chair / sofa / table
+		- employee to serve it
+		- time consumed to make it done by hotel people
+		- time consumed to fetch this raw material from market done by them
+	
+		- WE JUST HAVE TO ORDER LIKE A KING
+		- HENCE WE HAVE TO PAY LIKE A KING
+		- EARN LIKE A KING
+		- EARN LIKE A KING, WE HAVE TO LEARN LIKE A KING
+		
+	LAW OF ATTRACTION - SIMILAR FREQUENCIES CAN RESONATE WITH EACH OTHER
+				WITHOUT ANY EFFORT [ EFFORTLESS ]
+
+			
+	
+
+
+
+		Person x = new Person();
+
+		Person y = x;
+
+					  gender	age	name
+					  M		23	Jack
+		+------------------------>100
+		|			 |
+		100			100
+		x			y
+
+	two references are pointing to the same object
+
+	changes made via x can be reflected to y or vice versa
+
+	
+
+
+
+
+
+
+	method overriding
+		- let subclass define(redefine) a function 
+		which is already present in the super class
+
+
+	
+
+			FIELD		METHOD		CLASS
+	---------------------------------------------------------------
+	final		constant/	cannot be	cannot become father/r	
+			cannot be	overridden	cannot be subclassed
+			changed
+
+	---------------------------------------------------------------
+	static		share the	to refer
+			fields across	the other
+			all the objects static 
+			of a class	members
+
+	---------------------------------------------------------------
+	abstract
+
+
+
+	non-static			vs		static
+	(instance members)				(class's members)
+	|						|
+	loaded per object				loaded only once
+							- shared across all the 
+							objects 
+
+	loaded only after				pre-loaded before any 
+	instance creation				single instance
+
+
+	use the object reference			use ClassName to refer them
+	to refer them (subject				(subject to access)
+	to access)
+
+
+
+
+One thing in the universe is CONSTANT, and that is CHANGE
+
+
+
+
 
 
 

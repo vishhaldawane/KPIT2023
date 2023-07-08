@@ -17,18 +17,23 @@ public class SingleLevelTest {
  
 		Person thePerson = new Person('F',23,"Julie");
 		thePerson.showPerson();
+		thePerson.adhaarCard.setAdhaarCard("1663 5688 9448", "Kumar Villa", "Julie Dcosta", "11-Oct-2003");
+
 		thePerson.adhaarCard.showAdhaarCard();
 		System.out.println("***********************");
 
 		
 		Student theStudent = new Student('M',25,"Jack",123,"EXTC",90,'A');
 		theStudent.showStudent();
+		theStudent.adhaarCard.setAdhaarCard("1233 5678 9988", "Ram Manzil", "Jack Dsouza", "12-Oct-2002");
 		theStudent.adhaarCard.showAdhaarCard();
 		System.out.println("***********************");
 	
 		//Employee theEmployee = new Employee('F',24,"Reeta",345,"BTech",97,'A',7839,"Analyst",12000);
 		Employee theEmployee = new Employee('M',"Smith",20000,"CEO");		
 		theEmployee.showEmployee();
+		theEmployee.adhaarCard.setAdhaarCard("4533 6678 9988", "Rahim Niwas", "Smith Dmello", "11-Sep-2002");
+		
 		theEmployee.adhaarCard.showAdhaarCard();
 	}
 }
@@ -43,6 +48,7 @@ class AdhaarCard
 	AdhaarCard() {
 		
 	}
+	
 	public AdhaarCard(String adhaarNumber, String address, String nameOnAdhaar, String birthdate) {
 		super();
 		this.adhaarNumber = adhaarNumber;
@@ -51,6 +57,12 @@ class AdhaarCard
 		this.birthdate = birthdate;
 	}
 	
+	public void setAdhaarCard(String adhaarNumber, String address, String nameOnAdhaar, String birthdate) {
+		this.adhaarNumber = adhaarNumber;
+		this.address = address;
+		this.nameOnAdhaar = nameOnAdhaar;
+		this.birthdate = birthdate;
+	}
 	void showAdhaarCard() {
 		System.out.println("--ADHAAR DETAILS--");
 		System.out.println("ADHAAR NUMBER : "+adhaarNumber);
@@ -92,6 +104,26 @@ class Person // can we say -  isA Person a Student?
 		System.out.println("Name   : "+name);
 		System.out.println("-----------------");
 	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 }
 class Student extends Person //A Student isA Person
