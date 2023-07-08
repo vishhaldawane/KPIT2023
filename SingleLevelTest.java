@@ -10,7 +10,8 @@ public class SingleLevelTest {
 		theStudent.showStudent();
 		System.out.println("***********************");
 	
-		Employee theEmployee = new Employee('F',24,"Reeta",345,"BTech",97,'A',7839,"Analyst",12000);
+		//Employee theEmployee = new Employee('F',24,"Reeta",345,"BTech",97,'A',7839,"Analyst",12000);
+		Employee theEmployee = new Employee('M',"Smith",20000,"CEO");		
 		theEmployee.showEmployee();
 	}
 }
@@ -78,6 +79,7 @@ class Employee extends Student  //A Employee isA Student
 	float salary;
 	
 
+	//10 parameterized 
 	public Employee(char gender, int age, String name, int rollNumber, String stream, float marks, char grade,
 			int employeeNumber, String designation, float salary) {
 		super(gender, age, name, rollNumber, stream, marks, grade);
@@ -86,7 +88,10 @@ class Employee extends Student  //A Employee isA Student
 		this.salary = salary;
 	}
 
-
+	//4 parameterized
+	Employee(char gender, String name, float salary, String desg) { //smith joining salary  20000 ceo 
+		this(gender,0,name,0,"",0,' ',0,desg,salary); //invoking the 10 paramerized
+	}
 
 	void showEmployee() {
 		super.showStudent(); //invoke nearest super class's function
