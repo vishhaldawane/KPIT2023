@@ -868,6 +868,55 @@ One thing in the universe is CONSTANT, and that is CHANGE
 
 
 
+visualize any Instrument !!!
+visualize any MusicalInstrument!!!		
+visualize any MedicalInstrument!!!
+
+
+		pure partial contract
+
+1				Instrument <-- pure parial contract - interfaces
+				    |		strict version of abstract classes
+				    |          all methods are partial [ without code body]
+				    | use();
+		-----------------------------------------
+		|					|
+2	MusicalInstrument			MedicalInstrument <-- abstract 
+		play();					operate();	
+		|					|
+	-------------------------		-------------------------
+	|			|		|			|
+3  StringBasedMusical   AirBasedMusical	  SurgicalMedical	PathologicalMedical
+	Instrument	Instrument		Instrument		Instrument
+	|			|		|			|
+	tuneStrings();	  blowAir();		sterilize()		read();
+	|			|		|			|
+  -------------		-----------------	----------		----------
+  |	|		|		|	|	|		|	|
+4 Guitar Violin		Flute		Trumpet Needle  Cutter	 GlucoMeter Cardiogram
+  pluck() bow();   operateSixHoles() slide();   stitch()  cut()  readSugar()  readHeartBeats()
+  tuneString            blowAir			   sterilize()			read()
+    <------------play-------------------->	<-----------operate---------------->
+  <-----------------------------------------use()----------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
