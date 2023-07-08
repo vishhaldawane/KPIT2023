@@ -778,7 +778,64 @@ Teach to others
 			of a class	members
 
 	---------------------------------------------------------------
-	abstract
+	abstract	NA		partial		a class that has
+					contract of	partial contract
+					a class		- may have abstract
+					- undefined	methods
+					method/		
+					method without
+					any code body
+					withdraw(); <----BankAccount
+					deposit();  <----BankAccount
+								|
+							SavingsAccount  CurrentAccount 
+								CreditAccount
+
+
+	an abstract method must reside in a abstract class
+	but an abstract class may/maynot have abstract methods
+
+	ABSTRACT CLASS MEANT FOR INHERITANCE
+
+
+	
+abstract = partial contract [ ur brain has some hint | foggy hint ]
+
+interface = pure partial contract [ even a hint is not there ]
+
+
+
+				BankAccount <-- abstract | generalization
+				   |
+			-------------------------------------
+			|		|		|
+implementations	-> SavingsAccount	CurrentAccount	CreditAccount <-- specialization
+			rate		overdraft	creditLimit,cashLimit
+			
+
+				Inheritance 
+
+		Derivation		vs		Implementation
+		
+		Doctor					BankAccount <-- abstract
+		|diagnose(){}				|withdraw(); deposit(); <--abstract
+		Surgeon					SavingsAccount
+		|is overriding mandatory???		|is implementation mandatory??YES
+		HeartSurgeon				FixedDepositAccount
+		| is overriding mandatory???		|is overriding mandatory?? NO
+
+	overriding is totally at
+	the discretion of the developer
+	or the child class
+
+
+
+
+
+
+
+
+
 
 
 
