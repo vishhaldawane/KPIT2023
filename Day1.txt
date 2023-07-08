@@ -367,6 +367,241 @@ Teach to others
 
 
 
+	Constructor
+
+
+		it has the same name as of the "enclosing class"
+
+	class Flight
+	{
+		int flightNumber; //DATA
+		String flightName;
+		String source;
+		String destination;
+
+		void fly() { }	// FUNCTION/METHOD
+
+		//here a default constructor exists!!!!!
+		
+		
+	}
+
+
+				constructor 
+				|it has the same name as of the enclosing class
+	Flight flightObj = new Flight(); <-- it is used to initialize the data of the object
+	|	 |	   |	
+	class	reference allocator <-- it is following the allocator
+
+			if the allocator is failed, the constructor must fail
+			if the constructor is failed, the allocated data is rolled back
+
+
+		a constructor is invoked during object creation process
+		it is invoked only once per object reference
+		it cannot be invoked post to the construction
+		it cannot be invoked manually using the reference
+
+		flightObj.Flight(); //not possible | error
+
+		it can take arguments
+		and it can be overloaded
+
+
+	
+	OOPS
+	-----
+
+		Object Oriented Programming System
+
+
+	1. Abstraction | FOR THE USER | END USER | CUSTOMER
+
+
+		- hiding the complexity of an object
+		- while hiding, provide the USAGE of the object via accessible(public)functions
+		- it is a "what is?" part of an object | USAGE of an object
+
+		- hiding the data | data abstraction | total cash inside the ATM is hidden
+		- hiding the methods | printing/logging/counter functionality is hidden
+		- hiding the inner/nested classes | some internal components are hidden
+
+			What is an ATM?
+				- *** withdraw cash!!! ***
+				- change pin
+				- mini statement
+				- check balance
+				- cheque book request
+
+	2. Encapsulation | TASK OF THE DEVELOPER | BACKEND TEAM
+		- it is a "How is it?" part of an object
+			How the ATM is functioning???
+				- how the cash is dispensed???
+				- how the pin is changed?
+				- how the mini statement is generated?
+				- how the balance is checked?
+				- how the cheque book request is processed?
+
+
+
+		class ATM
+		{
+			private double totalCash; //data abstraction
+			private int numberOfCustomersHit;
+			
+			private void dispenseCash(float amt) { } //procedural abstraction
+
+			private class SecurityManager() {  // class abstraction
+					void secureTheUser() { }
+					void logTheUser() { }
+			}		
+
+			public void withdraw(float amt) { //PROVIDE the USAGE |public functions
+				..
+				SecurityManager secMan = new SecurityManager();
+				secMan.secureTheUser();
+				secMan.logTheUser();
+				dispenseCash(amt);
+				...
+				secMan.releaseTheSecurity();
+			}
+		}
+
+
+		Mountain vs Valley
+		|		|
+	     co - created at the same time
+
+
+	3. Polymorphism
+
+		ability  of a business entity to have multiple forms
+
+		a. function overloading - early binding 
+			- we can redefine a function with same name provided
+				i) with number of arguments
+				ii) type of arguments
+				iii) sequence of type of arguments
+
+		b. function overriding  - late binding
+		c. operator overloading* - not in java 
+
+		misnomer - static polymorphism
+				runtime polymorhpishm 
+
+			polymorphism is always/by default dynamic [ runtime ]
+
+			
+
+	4. Inheritance
+		Ability of a class/entity to acquire properties from 
+		existing business entities
+
+				Air	Water	Fire	Earth	Sky
+				arrangement of above properties is qualitative and quantitative
+
+						LivingBeing
+							|
+				--------------------------------------------------------------
+				|4				|3	   	|1	|2		
+				Animal <-- most generalized	Tree		Stone	Metal	
+				  |				|	   	|	 |immovable
+			  ------------------------	Flowring NonFlowering	Marble	Steel <-- proton (is not dead)
+			  |			 |	   |		|	 	
+			Mammal			Bird     Rose		Cactus
+			  |giveBirth()		|layEggs()
+		--------------------------	---------------
+			|5		|		|
+			Human		Tiger		Parrot
+			  |
+			Person <-- as a regular personality
+			|
+		---------------
+		|
+		Student <--u are here at college/school time
+		|
+	--------------
+	|
+	Employee <-- u are here - most specialized
+
+	Single Level
+	A
+	|
+	B
+
+	Multi Level
+
+	A
+	|
+	B
+	|
+	C
+
+	Multiple level - via interfaces in java
+
+		
+	A(c)	C(i)	D(i)
+	|	|	|	
+	-----------------
+	|
+	B *multiple parents 
+
+
+
+	Hierarchical level
+
+	A	F(i)
+	|	|
+	+--------
+	|
+	B	D(i)	E(i)
+	|	|	|
+	-----------------
+	|
+	C
+
+
+	5. Object communication
+		
+
+
+
+
+
+			Doctor
+			|
+		----------------
+		|
+		Surgeon
+		|
+		|
+	---------------------
+	|		|
+	HeartSurgeon	NeuroSurgeon
+
+
+
+
+	super() - refers to the nearest super class's constructor invocation
+		- must be the FIRST statement FROM A CONSTRUCTOR 
+
+	this.  - refers to the current class's object field/functions
+
+	this() - one constructor invokes another constructor of the same class
+
+	super. - refers to the nearest super class data or function if they are accessible
+		NO SUCH RULE OF SEQUENCE FOR SUPER.
+
+	
+
+
+
+
+
+
+
+
+
 
 
 
