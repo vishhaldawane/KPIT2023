@@ -1,19 +1,65 @@
+import java.time.LocalDate;
 
 public class SingleLevelTest {
 	public static void main(String[] args) {
+		
+		/*AdhaarCard card1 = new AdhaarCard("1234 4532 6789","21,West Avenue, Mumbai 16","Julie","12-Dec-2002");
+		AdhaarCard card2 = new AdhaarCard("5534 4532 6789","22,East Avenue, Mumbai 17","Jack","12-Dec-2003");
+		AdhaarCard card3 = new AdhaarCard("6634 4532 6789","25,North Avenue, Mumbai 18","Smith","12-Dec-2004");
+		*/
+		
+		
+		Person anotherPerson = new Person('F',20,"Peter","1234 1234 1234","45, South AVenue","Peter Parreira","12-Dec-2002");
+		anotherPerson.showPerson();
+		anotherPerson.adhaarCard.showAdhaarCard();
+		System.out.println("***********************");
+		
+ 
 		Person thePerson = new Person('F',23,"Julie");
 		thePerson.showPerson();
+		thePerson.adhaarCard.showAdhaarCard();
 		System.out.println("***********************");
 
 		
 		Student theStudent = new Student('M',25,"Jack",123,"EXTC",90,'A');
 		theStudent.showStudent();
+		theStudent.adhaarCard.showAdhaarCard();
 		System.out.println("***********************");
 	
 		//Employee theEmployee = new Employee('F',24,"Reeta",345,"BTech",97,'A',7839,"Analyst",12000);
 		Employee theEmployee = new Employee('M',"Smith",20000,"CEO");		
 		theEmployee.showEmployee();
+		theEmployee.adhaarCard.showAdhaarCard();
 	}
+}
+
+class AdhaarCard
+{
+	String adhaarNumber;
+	String address;
+	String nameOnAdhaar;
+	String birthdate;
+	
+	AdhaarCard() {
+		
+	}
+	public AdhaarCard(String adhaarNumber, String address, String nameOnAdhaar, String birthdate) {
+		super();
+		this.adhaarNumber = adhaarNumber;
+		this.address = address;
+		this.nameOnAdhaar = nameOnAdhaar;
+		this.birthdate = birthdate;
+	}
+	
+	void showAdhaarCard() {
+		System.out.println("--ADHAAR DETAILS--");
+		System.out.println("ADHAAR NUMBER : "+adhaarNumber);
+		System.out.println("ADDRESS       : "+address);
+		System.out.println("NAME ON ADHAR : "+nameOnAdhaar);
+		System.out.println("BIRTHDATE     : "+birthdate);
+		System.out.println("-----------------");
+	}
+	
 }
 
 class Person // can we say -  isA Person a Student?
@@ -21,14 +67,22 @@ class Person // can we say -  isA Person a Student?
 	 private char gender;
 	 private int age;
 	 private String name;
+	 AdhaarCard adhaarCard; //just a reference to it
 	 
 	//Person() { }
-	
+	 		//<---------Personal-----------><------------hasA ------------------------------------------------>
+	Person(char gender, int age, String name,String adhaarNum, String address, String nameOnAdhaar, String dob  ) {
+		this.gender = gender;
+		this.age = age;
+		this.name = name;
+		adhaarCard = new AdhaarCard(name, adhaarNum, address, dob); //instance creation process is taken care
+	}
 	public Person(char gender, int age, String name) {
 		super();
 		this.gender = gender;
 		this.age = age;
 		this.name = name;
+		adhaarCard = new AdhaarCard();
 	}
 	
 	void showPerson() { //Exclusive - cum - Inherited method 
