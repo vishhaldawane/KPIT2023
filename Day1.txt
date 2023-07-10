@@ -922,6 +922,123 @@ visualize any MedicalInstrument!!!
 
 
 
+Exception handling
+
+		Exception = runtime error
+
+
+				Errors
+				|
+	-----------------------------------------------
+	|	  |		|	|	  |
+	compile  linker	   runtime	fatal   logical
+	|	 |		|	 |	    |
+	syntax missing	    Exception   threat	    4+4=16 (logically wrong formula)
+		libraries		to an
+					app to	
+					terminate
+
+
+
+		checked			vs		unchecked
+
+
+
+		long Drive				short drive
+		|					|
+		200km					5km
+		|					|
+		FirstAidKit				X
+		should be carried
+
+		Stepney (spare)				X	
+		wheel
+	
+		carry some food				X
+
+		FuelTank to be				X
+		fulled
+
+		carry Water				X
+
+		Phone charger				X		
+
+		built in charger			X
+		in the car
+
+		Insurance policy			Y
+		RC book					Y
+		PUC					Y
+		driving license				Y
+
+		make sure car is			X
+		serviced or not
+
+		brake pads to				X
+		be verified
+
+		coolent					X
+
+		engine oil				X
+
+		speed cameras				X	
+		to be spotted
+		well in advance
+		 				  red signal to be honoured
+						  or might be dishonoured
+
+						  
+						  tyre punctured 
+
+						  accident 
+		-----------------------------------------------									
+
+
+				Object
+				| 11 methods
+				|    hashCode(), equlals(), wait(3),notify(), notifyAll =7
+				|    toString(), clone(), finalize(), getClass() = 4
+				Throwable
+				|
+			----------------------
+			|		|
+			Error		Exception
+			|		|"checked" by the compiler |  except the RuntimeException |  can be caught using the catch block
+	VirtualMachineError	-------------------------
+	ThreadDeath		|
+	StackOverflowError	|
+				|
+		--------------------------------------
+		|
+	RuntimeException
+		|"unchecked" by the compiler
+------------------------------------------
+	|	    |	|	|
+ArithmeticException | NullPointerException
+	IndexOutOfBoundsException
+		    |
+	------------------------------
+	|			|
+ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
+	
+	
+
+
+
+
+
+		try    catch   finally
+
+		throw throws
+
+
+
+
+
+
+
+
+
 
 
 
