@@ -1004,18 +1004,18 @@ Exception handling
 			|		|
 			Error		Exception
 			|		|"checked" by the compiler |  except the RuntimeException |  can be caught using the catch block
-	VirtualMachineError	-------------------------
-	ThreadDeath		|
-	StackOverflowError	|
+	VirtualMachineError	--------------------------------------------
+	ThreadDeath		|		|			|
+	StackOverflowError	|		CarDocumentException CheckFuelException
 				|
 		--------------------------------------
 		|
 	RuntimeException
 		|"unchecked" by the compiler
-------------------------------------------
-	|	    |	|	|
-ArithmeticException | NullPointerException
-	IndexOutOfBoundsException
+----------------------------------------------------
+	|	    |	|	|	     |	|
+ArithmeticException | NullPointerException   |	RedSignalDishnouredException
+	IndexOutOfBoundsException	TyrePunctredException
 		    |
 	------------------------------
 	|			|
@@ -1033,13 +1033,122 @@ ArrayIndexOutOfBoundsException, StringIndexOutOfBoundsException
 
 
 
+		try
+		{
+			if these 5 lines are teh part of a particular business logic
+			1
+			2
+			3
+			4
+			5
+		}
+		catch() { }//problem of line 1
+		catch() { }// problem of line 3
+		catch() { } //problem of line 5
+
+		..
+		..
+
+		try	
+		{
+			another business logic here, nothing to do with previous try/catch
+			1
+			2
+			3
+		}
+		catch() { }
 
 
 
 
 
 
+	to create user defined exception
+	we have to decide if it is checked / uncheck
 
+
+Multithreading
+------------------------------------------
+	
+Thread 
+	|
+	set of statements
+	set of instructions
+
+
+Accounts
+----------
+------------------------------------
+|101  Suresh  [ 90000    <--t2 ] 	    
+------------------------------------
+102  Dinesh  60000
+103  Rajesh  70000
+104  Haresh  80000
+105  Zubair  90000
+
+			Cash Deposit Counter
+	
+	Board			Board			Board
+	1-75			76-150			151-225
+	Teller1			Teller2			Teller3
+	|			|			|
+	getBalance()		getBalance()		getBalance()
+	|			|			|
+	calcAmt()		calcAmt()		calcAmt()
+	|			|			|
+	setBalance()		setBalance()		setBalance()
+	|			|			|
+	Customer1		Customer2		Customer3
+time	10.30			10.30			10.30
+a/c	101			101			101
+cash	5000/-			7000/-			8000/-
+deno..	100Rs.			50Rs.			2000Rs.
+count	50notes			140Notes		4notes
+
+	Customer4		Customer5
+	
+
+	Thread synchronization
+
+
+
+
+	Eatable(i)		Runnable(i) <--interface
+	|eat();			| run();
+	----------------       -----------|
+	|		|      |	  |
+	|		|      |	  |
+	FoodItem	|Stone Frame	  Thread <--regular class
+	|eat(){}	| |    |	    |run() { }
+	|prepare(){}	| |    |	    |start() { } ------ > Thread Scheduler
+	|		| |    |	-----------------------------
+	|		| |    |  	|	|	|	|	|
+	Samosa         Chalk  MyFrame	Car	Train	Ship	Flight
+						Bike, Ship Yatch Boat Cycle
+		
+
+interface Eatable { void eat(); }
+
+class FoodItem implements Eatable {
+	public void eat() { }
+}
+class Samosa extends FoodItem {
+
+}
+
+class Stone { }
+class Chalk extends Stone implements Eatable {
+	public void eat() {//mandatory
+	}
+}
+
+1)  extend from Thread class
+	Car	Train Ship  Flight
+
+2)  implement Runnable interface
+	MyFrame
+
+----------------------------------------------------------------
 
 
 
