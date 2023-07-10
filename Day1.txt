@@ -1121,11 +1121,38 @@ count	50notes			140Notes		4notes
 	FoodItem	|Stone Frame	  Thread <--regular class
 	|eat(){}	| |    |	    |run() { }
 	|prepare(){}	| |    |	    |start() { } ------ > Thread Scheduler
+	|		| |    |         
+	|		| |    |		 Vehicle
+	|		| |    |		    | 
 	|		| |    |	-----------------------------
 	|		| |    |  	|	|	|	|	|
 	Samosa         Chalk  MyFrame	Car	Train	Ship	Flight
 						Bike, Ship Yatch Boat Cycle
 		
+						Rocket, Helicopter, BullockCart,
+						HorseCart, Horse
+
+
+1)			Runnable*
+			|run();
+			|
+			Thread**
+			|start(){Main Logic Of Threading}
+			|
+			Car (grand child of Runnable)
+
+
+2)			Runnable*	Vechile**
+			|run();		  |
+			|		  |
+			+---------------+ |
+			|	        | |
+			Thread		Car (Car is direct child of Runnable)
+ 	             ==>start()<==
+			
+			Pass the Car's Object to the Thread's constructor
+			
+
 
 interface Eatable { void eat(); }
 
@@ -1148,12 +1175,127 @@ class Chalk extends Stone implements Eatable {
 2)  implement Runnable interface
 	MyFrame
 
+
+
+	Priority
+
+	MIN_PRIORITY	NORM_PRIORITY	MAX_PRIORITY
+	1		5		10
+			(default)
+
+	Lets make 2  number counter threads
+
+		Couter1		Counter2
+		while		while
+		 i++		 i++
+
+		Min		Max
+
 ----------------------------------------------------------------
 
+Collections
+-------------
+
+			A Bag - or a sac - bori 
+
+		to hold the content
 
 
+Components orthogonal space
 
 
+				Content
+				|x
+				|	Water
+				|	FriedRice
+				|	Noodles
+		---------------------------------
+		|				|
+		Container			Algorithm
+		 |y		i		|z
+		 +------------Iterator----------+
+		 |		|		|
+	       Glass		Straw		stir/drink/mixit/pourIt
+	       Plate		Spoon		eatIt
+	       Bowl		ChopSticks	eatIt	
+
+
+		Eating(z) Algorithm
+		    \
+                   / \ <-- ChopSticks(i) to iterate through the content, to hold the noodle
+		  /   \
+	      \	 noodles <---- content x
+	       \   @@@@  /
+		\&&&##	/ <---- container
+		---------	 y
+
+		Eating(z) Algorithm
+		   \
+                    \ <-- Spoon(i) to iterate through the content, to hold the rice
+		     @
+	      \	 rice<------ content x
+	       \  .....  /
+		\......	/ <---- container
+		---------	 y
+
+
+				     Iterable(i)
+					|
+				Collection (i)
+					|
+			-----------------------------------
+			|				|
+			List				Set
+			|duplicates			|unique
+		--------------------		-------------------
+		|		|		|		|
+	   ArrayList	  LinkedList	   TreeSet	   HashSet
+	   |		     |			|		|
+==>	elevator	   staircases		tree	      fruiter shop
+
+	growable	node1 p/n	node2 p/n	
+	at the		 100	|------>200   | | 	 node3 p/n	
+	end		 <--------------|------+ --------->300  |
+					|-----------------------+	
+	search is		DML flexible
+	faster			not efficiency
+
+	insert in
+	beween is 
+	poor
+
+Phone Logs Records
+
+Reeta 10.30
+Seeta 10.30
+
+
+indx	value
+0	10
+1	20
+2	30
+3	40
+4	50
+
+
+	dead end of the car shed
+	--------
+	|1	|
+	 2
+	 3
+	 4
+	 5
+	 6
+	 7
+	 8
+	 9
+	 10
+	 11
+	 12
+	 
+	
+	
+	
 
 
 
