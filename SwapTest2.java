@@ -2,10 +2,29 @@ import java.util.LinkedList;
 
 import com.mysongs.Song;
 
+class RunAny {
+	
+	void run(A aRef) {
+		
+		aRef.foo(); //super class method
+		if(aRef instanceof B) {
+			B bRef = (B) aRef;   // every Surgeon is a Doctor, but every Doctor is not necessarily to be a Surgeon
+			bRef.fun(); // + child class method too
+		}
+
+	}
+}
+
 public class SwapTest2 {
 	public static void main(String[] args) {
 		
-
+		A a = new B();
+	//	a.foo();
+	//	a.fun();
+		
+		RunAny r = new RunAny();
+		r.run(a); //at high level it is A's type, technically it is B (which is also an A)
+		
 		//LinkedList ll = new LinkedList();
 		
 		
@@ -25,8 +44,58 @@ public class SwapTest2 {
 		songPair.printPair();
 		
 		//What if two different BankAcccounts / Flights/ Employees / Students
-	}
 	
+		
+		//b.foo(); // overridden is referred, ie of B's foo invoked
+		//a.fun();
+		
+		if(a instanceof A)
+		{
+			System.out.println("a is of Type A");
+			a.foo();
+			
+		}
+		
+		//Runtime Type Identification | Reflection - getClass
+		
+		System.out.println("---------");
+		
+		if(a instanceof B) //now a is pointing at B
+		{
+			System.out.println("b is of Type B");
+			a.foo(); //early binding
+			
+			//a.fun(); //cannot
+			B b = (B) a; // 
+			b.fun();
+		}
+	}
+}
+
+class A // is A aware of B?
+{
+	void foo() {}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class B extends A // B is acquiring
+{
+	void fun() { }
+	void foo() { }
 }
 
 class AnyPair<T> // A generic class for any unknown data type
