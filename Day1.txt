@@ -1293,9 +1293,295 @@ indx	value
 	 11
 	 12
 	 
+---------------------------------------------------------------
+
+
+TreeSet
+
+Atomic Number  : 79 47 3 13 26
+Atomic Formula : Au Ag Al Li Fe
+Atomic Name    : .....
+Atomic Weight  : .....
+
+
+AVL 
+			Root
+			|47
+		--------------------------
+		|<			|
+	       LeftChild		RightChild
+		|13			|79
+	-----------------	-----------------
+	|		|	|		|
+	LLC		LRC	RLC		RRC
+	|3		26
+
+
+	RootLeft
+
+	3 13 26 47     79
+	<--L--> Root  <---R--->
+
+		R	root	L
+
+
+
+
+
+	BMP
+	Bean managed persistence
+			|
+			storing the java object on the database in the form of a ROW
+
+
+
+	JDBC - manual way to do it
+
+
+		Java Databaes Connectivity
+
 	
+		FrontEnd			BackEnd
+		|				|	
+		JAva				HSQLDB / MySQL/ Oracle / MSSQL
+		|				|
+		+------------Driver-------------+
+		|		|		|
+		provided	Third		DB Provider
+		by Oracle	Party		would give us the driver
+		Corporation			
+
+
+		1. Know your database : HSQLDB
+		2. Know the Driver class : org.hsqldb.jdbc.JDBCDriver.class file
+				this driver most of the time is kept in a jar file
+			/Users/apple/hsqldb-2.6.1/hsqldb/lib/hsqldb.jar
+		3. Load the driver
+			(class)->DriverManager.registerDriver();
+
+		4. Connect to the database
+			DriverManager.getConnection(dsn, username, password)
+		
+		5. Once u get the *Connection
+				make a desired statement
+				 |
+			----------------------------------
+			|		|		|
+		*Statement     *PreparedStatement	*CallableStatement
+		SELECT	      INSERT/UPDATE/DELETE   procedure/functions
+
+
+--------------------------------
+
+
+
+	select * from dept
+	select * from emp
+	select * from customer
+			 |
+	<-----------> variable portion
+
+	insert into emp  values (?,?,?)	
+	insert into dept values (?,?,?,?,?)
+	insert into cust values (?,?,?,?)
+	<--------->  |   <----->   |
+	 fixed            fixed
+
 	
+	select * from ?		
+		 |
+		result.getInt(1) <-- output from 1st column
+			 |
+
+	Dept                   Emp		Cust
+	|	----------------|---------------|
+	|	|		|		|
+	Department	    Employee		Customer <--------- POJO
+	getDeptno() { }	    getEmpno() { }	getCustoNo() { }  Plain OldJava Object
+
+		deptno		empno		custno
+
+
+
+
+		Select
+		Insert
+		Update
+		Delete
+		
+		what is repeating????
+
+		1. DriverManager.registerDriver
+		2. Connection conn = DriverManager.getConnection
+			
+		
+
+		3. Statement		- Select Query
+		   PreparedStatement	insert
+		   PreparedStatement	update
+		   PreparedStatement	delete
+
+
+		Table			this is the Pojo for this Table
+		Dept			Department
+		Emp			Employee
+		Cust			Customer
+
+
+
+
+	Dept (1) ------ Many Employees
+
+	Many Employee ---- (1) Dept
+
+	Employee (1)------(1) Pancard
 	
+
+	Many Employees	Many Projects
+
+
+
+project
+-----------
+projectid   projectname	  deadline
+55		airline		.
+66		banking		..
+77		insurance	..
+
+
+project_emp <-- many to many 
+-----------
+pid	empno
+55	101
+55	102
+55	103
+66	101
+66	102
+66	103
+
+
+Dept
+--------
+PK
+deptno	dname	loc
+10	IT	NY
+20	Sales	ND
+30	Purchase NJ
+
+	emp
+	-----
+	PK				FK
+	empno	ename  job  	sal  deptno
+	101	Jack   manager   5000  10 
+	102	Jane   developer 4000  10
+	103	Jill   tester    3500  10
+	104	Suresh manager   5500  20 
+	105	Rajesh clerk     4400  20
+	106	Dine   accountant3560  20
+
+pancard
+---------
+PK						FK
+panid		issuedby  dob	fathername    empno
+JRHTD8976A	..	  ..	 ...		101
+asdf						102
+dfasdf						103
+afdsfd						104
+aserdf						105
+dkafhdaskf					106
+
+
+
+		Tables are not Classes
+
+		Classes are not tables
+
+
+
+1	Dept					Department
+	 table					   class [ pojo ]
+	|
+N	Emp					Employee
+
+
+						class Department { 1
+							int depno
+							String dname
+							STring loc
+							N -> ArrayList<Employee> emps;
+						}
+						class Employee { 1  /  N
+							int empno
+							String ename
+							float sal;
+							Date doj;
+							1 PanCard pcard = new PanCard();
+						
+							N ArrayList<Project> projects;
+						}
+		ORM = Object Relational Mapping F/w
+
+
+		Hibernate 
+		|
+	------------------
+	|		|
+	xml		annotation
+	X		YES
+
+
+
+	Project management Tool to make such f/w based application
+		- to download libraries
+		- to update the libraries
+		- to take care of portability issues
+		- version conflicts
+
+	Test 4		Test 5			Test 5.5
+	HSQLDB 2.5	2.6			2.7
+	Java 8		Java 11			Java 17
+	Machine1	Machine2		Machine3
+	|		|			|
+	YourLaptop	CompanyLaptop		ClientLaptop
+	|		|			| BOA
+	Shubham K	..			..
+
+	Java code	->			->
+
+Now onwards no one will create simple java project
+
+rather -- Maven Project to be created
+
+	pom.xml
+	| will have depedencies declared
+	Maven Project
+
+
+
+		FirstProject
+			|
+	-----------------------------------
+	|		|
+	pom.xml		src
+			|
+		-----------------------------------
+		|			|
+		main			test
+		|			|
+	---------------------		test cases
+	|		|
+	java		resources	
+	|			|
+	your code	configuration files
+
+
+	right click
+	|
+	------> run->maven build...
+				|
+				goals
+				|
+			clean compile  exec:java -Dexec.mainClass="Test"
 
 
 
