@@ -1585,6 +1585,236 @@ rather -- Maven Project to be created
 
 
 
+7 habits of highly effective people
+	- Stephen Covey
+
+10 mnts video to cover the entire book
+
+You cannot decide your future, but you can decide your habits.
+and your habits will decide your future.
+
+		habit = neural wiring
+			it can be refixed with 21 days of efforts
+
+	PERSONAL VICTORY / INTERNAL WORLD
+	1. Be Proactive 
+	2. Begin with the End in Mind
+	3. Put first thing first
+
+
+	4. Win - Win
+
+	PUBLIC VICTORY / SOCIAL / FAMILY / OFFICE / OUTSIDE WORLD
+	5. Seek first to understand then to be undertood
+		Be interested, and then be Interesting
+	6. Synergize
+	7. Sharpen the SAW 
+
+		
+
+	
+
+	meta physics
+	|	|
+	|	java
+	|
+	the points shared with me
+
+
+
+	
+
+	ORM
+	---
+		Object Relation Mapping
+
+	What you need to run an ORM Project
+
+
+	1. ORM Libraries | pom.xml dependencies -> hibernate/jpa/junit
+	2. Database | hsqldb | started in cmd prompt | and interface in another cmd
+	3. A Table | mydept120
+	4. A Pojo mapped with the Table | Department.java
+	5. a configuration file to talk to ORM | MAKE IT NOW
+	6. A client program to test the ORM    | MAKE IT NOW
+
+
+
+		2.Database				2.Database
+		3.Table					3.Table
+		4.POJO					4.POJO
+		|					|
+		BMP					CMP
+		|					|
+		jdbc code				an ORM f/w
+		manually written			would perform jdbc for us
+		|					|
+		DriverManager.registerDriver		1.ORM Libraries
+		DriverManager.getConnection		5. a config file 
+		Statement				6. The client code
+		PreparedStatement
+		6. client code
+		ResultSet
+
+	2.HSQLDB
+	3. Table
+		KpitOrmProject	
+			|
+	-----------------------------------
+	|		|
+	pom.xml		src
+	(1) orm jars	|
+		-----------------------------------
+		|			|
+		main			test
+		|			|
+	---------------------		very soon to be written
+	|		|
+	java		resources	
+	|OrmTest.java(6)	|
+	entity			META-INF <-- must be in this folder 
+	|			|
+  Department.java (4)		persistence.xml <-- must be this name
+				(5) |
+				  Driver/URL/username/password
+				and other ORM settings
+
+	persistence.xml file is read by THE ORM F/w to know 
+	the details of driver/username/password/url
+	the db dialer
+	create/update table strategy
+	connection pool	
+	threading details...
+
+
+	JDBC			ORM
+	|			|
+	insert			persist() <--JPA / save() <-- hibernate
+	update			merge() <-- JPA  / saveOrUpdate <-- hibernate
+	delete			delete()/remove
+	select			get
+	select many recs	jpql [ java persistence query langauge ]
+
+
+
+
+			Java Object
+				|Department dept = new Department();
+		------------------------------------
+		|			|	
+		File			Database
+		|			|
+	ObjectOutputStream		----------------
+	ObjectInputStream		|		|
+	|				BMP		CMP
+					|		|
+					jdbc code	ORM
+	
+	    Jenkin
+					
+	Dev	Ops
+	|	|
+developer	deployer
+testerss	End users to use it
+
+
+
+-------------------------------------------
+
+I.   3 MCQ Tests
+II.  Mini Code Marathon
+III. Code Marathon
+
+
+	1st MCQ - 20 questions - Thursday : 8.30 offline mode from office
+	2nd MCQ - 20 questions - Friday   : 8.30 offline mode from office
+
+	3rd MCQ - 20 questions - Saturday : 8.30 offline mode from office
+					    I will be there
+		
+			9 to 10.30 - Mini Marathon - 3 questions
+
+			11 to 1 - Code Marathon	- 5 questions
+
+
+
+
+
+	Spring Framework
+
+			- DI / IoC
+		
+			Dependency Injection / Inversion Of Control
+
+
+	interface Flower {
+		void flowering();
+	}		
+
+	class Rose implements Flower {
+		public void flowering() {
+		
+		}
+	}
+
+	Garden
+	{
+		Flower getFlower() {
+			Flower flower = new Rose();
+			return flower;
+		}
+	}
+	FlowerTest {
+		main() {
+			Rose rose = new Rose(); // discourage this
+			
+			Garden garden = new Garden();
+			Flower flower = garden.getFlower();
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	1. Your Pojo | business entity | Rose Lotus etc...
+	2. a configuration file | spring.xml | or any alian name
+	3. Spring libraries | pom.xml dependencies
+	4. a client code | a test code or  main method
+
+
+	
+
+
+
+
+
+
+
 
 
 
