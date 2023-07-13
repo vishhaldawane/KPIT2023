@@ -1809,19 +1809,196 @@ III. Code Marathon
 
 	
 
+DAO Design pattern
+
+	Data Access Pattern
+
+
+	Manual Way			Automated Wa
+	BMP				CMP
+	Pure JDBC Code			ORM
+	|				|
+	DriverManager			EntityManagerFactory
+	Connection			EntityManager
+	Statement			EntityTransaction
+	ResultSet			em.persist(deptObj);
+					em.find(Department.class,20);
+		|			|
+		+-----------------------+
+			   |
+			  DAO
+
+	Kitchen
+	|	Chefs are here busy creating food | BMP | CMP
+	|		DATABASES [1] + POJO [2]  
+	|
+	Cafeteria
+			Person1 Person2 Person3 <-- people to serve the food
+			Food Counter [DAO] [3]
+	
+						SERVICE LAYER[4]	BUSINESS LOGIC | what food you want? qty ?
+								 | card/gpay/food cards/cash/
+	Customer ---> Service counter to get the Food Coupon <-- BILLING MACHINE
+	|						empno/menu choice				 
+	|						CONTROLLER [ 5]
+	Food Menu
+	| [ ANGULAR UI ] [6]
+	we search for our 
+	favourite food
+
+	Table1	Table2	Table4	...	Table10
+	
+
+	Cook is also known as Chef
+
+1 DB
+2 Pojos <--- @Component
+3 DAOS  <--- @Repository [ it would do inventory kind of activity DML operations]
+4 Service <--@Service[ some type of service for the client ]
+5 Controller<-@Controller [ controll the customers ]
+6 UI
+
+Spring MVC
+
+	MVC
+		
+						prn number
+	empno		insurance policy no	to know flight ticket details
+	7839		1234
+	|
+	--------------
+		|
+		Controller - A servlet - Dispatcher Servlet
+		| request / response
+	------------------
+	|		|
+	Model		View		
+	(data)		|
+	1. database	static : html / css 
+	2. pojo		dynamic : jsp pages
+	3. repositories
+
+
+
+	Apartments
+	where i live
+
+	Building1		Building2	Building3
+	   A			B		C
+	   |			|		|
+	 controller1		Controller2	controller3
+		|		|		|
+	   ----------------------------------------
+			|
+			|
+		Common Security Reception Gate
+			FrontController
+			|
+			|
+		--------------------------
+		|	|	|	|	   |	
+	Existing    Visitors  Relatives SalesPeople ...	
+	Residents	|	|	|
+	  |		
+   --------------
+  |      |     |
+ walk   bike  car
+
+
+
+----------------------------------------------------------------
+
+	Java Programs are of 3 types
+
+	1. Application		2. Applets		3. Servlets
+		|			|			|
+		main()			life cycle methods
+							is used to generate
+							dynamic web output
 
 
 
 
 
+				web output
+				|
+			-------------------
+			|		|
+			static		dynamic
+			|		|
+			html		--------------
+			css		|	     |
+				  executed	executed
+				at the client	at the server
+				|			|
+				Browser			ApacheTomcat
+				|			|
+				java script		Servlet
+
+
+	MVC PATTERN
+	--------------
+
+
+	STATIC PAGE
+	--------------
+	login.html/login.css					[ MODEL ]
+	-----------------					to the DB
+	Enter username <input type=text name="uname">		will connect
+	Enter password <input type=password name="upass">	    |	
+	<input type=submit name=submit value="Login"> ----> will hit| a servlet
+						|	may a LoginServlet
+						|		|[ CONTROLLER ]
+						|	will decide a dynamic
+						|	output as below
+						|
+				-------------------------------
+				|			|
+			User Logged in		Login Failed
+			[ VIEW1 ]		[VIEW 2]
 
 
 
 
 
+ STATIC PAGE
+        --------------
+        emp.html/emp.css                                    [ MODEL ]
+        -----------------                                       to the DB
+        Enter empno <input type=text name="eno">           will connect
+        Enter password <input type=password name="epass">           |   
+        <input type=submit name=submit value="Show Emp"> ----> will hit| a servlet
+                                                |       may a EmpServlet
+                                                |               |[ CONTROLLER ]
+                                                |       will decide a dynamic
+                                                |       output as below
+                                                |
+                                -------------------------------
+                                |                       |
+                        Emp Info 		 Emp Login  Failed
+                        [ VIEW1 ]               [VIEWEmp Login 
 
 
 
+1. convert your web application into a maven app
+2. add the dependencies in pom.xml
+
+3. add the DispatcherServlet in web.xml
+		|
+	FrontController
+
+
+4. create spring-servlet.xml file <--spring beans configured here
+
+
+
+
+request-->		FrontController ----req--> Controllers
+response<-------	DispatcherServlet	 [ your specific controllers]
+			|	|	<----resp------
+			|	|
+			|	|
+			view pages
 
 
 
