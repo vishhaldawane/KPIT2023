@@ -1883,17 +1883,51 @@ Spring MVC
 	Apartments
 	where i live
 
+
+Development structure : is subject to the editor IDE environment
+
+
+Developer = coding + configurations + some settings + .....
+		|	
+		80%
+			src
+			|
+		------------------
+		|
+		main
+		|
+	-----------------
+	|
+	webapp
+	|
+------------------
+		|
+		WEB-INF
+		| <-- this file is pickup by ApacheTomcat to know
+		|	the details of your app
+		web.xml <-- here the gatekeeper is appointed
+			   named as DispatcherServlet
+					|
+		its nick name is spring [ it can be any alian name ]
+		so the configuration file = spring-servlet.xml
+	
+Deployment  structure  : is fixed as per teh web server
+
+Sagar Samrat Cooperative Housing Society
+
 	Building1		Building2	Building3
 	   A			B		C
-	   |			|		|
-	 controller1		Controller2	controller3
-		|		|		|
+	   |			|		| 7th floor | 709
+	 controller1		Controller2	Controller3
+		|		|		| your controller
+		|		|		| Model View
 	   ----------------------------------------
 			|
 			|
 		Common Security Reception Gate
-			FrontController
-			|
+			FrontController | Watchman
+			|GateKeeper [ configuration file is named
+			| as per teh servlet name from web.xml]
 			|
 		--------------------------
 		|	|	|	|	   |	
@@ -1992,7 +2026,8 @@ Spring MVC
 
 
 
-
+clients
+|
 request-->		FrontController ----req--> Controllers
 response<-------	DispatcherServlet	 [ your specific controllers]
 			|	|	<----resp------
@@ -2001,6 +2036,233 @@ response<-------	DispatcherServlet	 [ your specific controllers]
 			view pages
 
 
+person2 is the owner of 2 hotels
+--------------------------------------
+DispatcherServlet
 
+
+
+HOtel1
+prepare daal rice
+prepare fried rice M	C			V
+	|[person1]	person4			[ person3 ]
+	Chef		Controller		Presenter[view]
+			|			|
+			|			serve it to cust1
+		cust1				serve it to cust2
+		DaalRice
+
+		cust2
+		FriedRice
+		
+	person6		person5			person7
+			Controller
+hotel2
+
+
+	Whatever that doesnot depend upon business logic
+	must be automated
+
+
+
+
+
+	Spring Boot = Spring application with autoconfiguration
+
+		and opinionated settings | application.properties
+						key = value
+
+
+	Car		spring.xml	pom.xml		web.xml
+	Engine		spring-servetl.xml
+	Piston
+	|		<------ done by spring boot ----------->
+	to be 
+	done by
+	you
+
+-----------------------------------------------------------------
+
+
+
+
+Restaurant 
+-----------
+
+					Kitchen (s5) equipped with all the material as per the MenuCard
+					|
+					Chef(s4) | ChineseChef, IceCreamChef, SouthIndianChef, 
+Menu(s1)				|	
+1. FriedRice			Service Counter(business with customer)
+2. Soup					|(s3)
+3. IceCream				|
+4. Medu Wada				|		BillingCounter-1
+					|		2 FR,1 IC,1 S,1M	
+		Table1(5)-------request----------->(s2)<--Coupon->Money
+		Jack+(4)
+  Table2(3)			Table3(4)		BillingCounter-2
+							BillingCounter-3	
+			Table4(0)	Table5(1)
+
+--------------------------------------------------------------------------
+Now in SpringBoot+JPA+Angular Way
+				J    1	TAble : FriedRice(table), IceCream(table)
+					|
+                                P    2  Kitchen (s5) equipped with all the mate
+       FRONT-END                        | [ POJO ] FriedRice, IceCream,Pizza,   
+					| 
+           |  6                 A    3  Chef(s4) | [ FriedRiceRepository] | IceCreamRepository | PizzaRepository ..... ChineseChef, IceCreamChef, S
+Menu(s1)<-Angular(UI)                   |     
+1. FriedRice <-Button|Order|qty      4 Service Counter( [ FoodService ] | business with customer)
+2. Soup                                 |(s3)
+3. IceCream				|			 B A C K - E N D
+4. Idli Wada				|	
+5. Medu Wada                            |    	5	 RestControllers
+6. Potato Wada                          |               BillingCounter-1 <--+ BillingController
+    Submitt                             |               2 FR,1 IC,1 S,1M    | 
+                Table1(5)-------request----------->(s2)<--Coupon->Money	    |
+                Jack+(4)	    resonse<--------------------------------+
+  Table2(3)                     Table3(4)               BillingCounter-2
+                                                        BillingCounter-3     
+                        Table4(0)       Table5(1)		1. Live Order  | LiveController
+								2. Phone Order | PhoneController
+								3. TakeAway    | ParcelContoller
+								4. Swiggy/Zomato | SwiggyController | ZomatoController
+
+
+				who
+				|developer?tester?deployer?page designer?dba?database user?
+		---------------------------------
+		|				|
+		where				when
+		|space				|time
+	--------------------------------------------------
+	|			|			|
+	why			what			how
+	Reason			inFORMation	  implementation
+							|CODING
+						----------------
+						|		|
+						success	<---- feedback(errors)
+
+
+
+
+	scalability of the application
+
+
+	Spring Boot Project
+	----------------------
+	1. table | Pizza_tbl,.,.,.,.,.,.,.,.,.,.,.,.
+	2. pojo  | Pizza [ class mapped with the table(s) ] on relationships
+				1 to 1, 1 to many, many to 1, many to many
+
+
+	3. repository for this pojo | PizzaRepository
+		3i) test the PizzaRepository with Junit
+
+
+	4. service		    | PizzaService	
+		4i) test the PizzaService with Junit
+
+	5. controller		    | PizzaController
+		5i) test the controller with Postman, or such tools
+
+	6. ui			    | Angular Pages for Pizza Menu
+
+
+
+
+		Typical ORM			Spring way ORM
+	EntityManagerFactory			no need to load EntityManagerFactory, as spring will provide it to us
+	EntityManager				no need to load EntityManager, as spring will provide it internally
+	| EntityTransaction			no need to start EntityTransaction, just use @Transactional annotation on your method
+	|
+--------------------				spring provides a class who manages all these things for us
+|	 ||     | |
+persist()|find()|remove()			BUT THAT CLASS DOES NOT KNOW ABOUT YOUR POJO
+    merge()  createQuery
+						interface Repository { }
+								|
+   above CRUD functions				interface CrudRepository { }
+							   |
+							   --------------------
+							   |		     |
+   around Department Pojo			           |10 methods	PagingAndSorting
+							   |			|
+							   |			JpaRepository
+							   |
+						           | save(),findById(),delete(),....10 such functions
+							   | [ extends ] 
+						interface PizzaRepository<Pizza,Integer> | associate your POJO with Primary key of Integer type
+							   |
+Do we have to repeat all			------------------
+the above procedures if				|
+i have Flight Pojo? YES			 CrudRepositoryImplemetation <-- here all the functions are implemented by spring
+SavingsAccount? YES
+Pizza? YES
+
+
+
+
+
+
+
+
+
+
+
+
+
+		in our training				in real time 
+		we are using name as			project the names as
+
+		layer1					no such package
+		layer2					entities / pojos
+		layer3					repositories
+		layer4					services
+		layer5					controllers
+
+
+		com.kpit.layer2				com.kpit.entities
+		com.kpit.layer3				com.kpit.repositories
+
+						
+
+
+
+class P { // POJO
+	fun() { }
+}
+
+class R { // REPO
+	P p;
+	foo() {
+		.....p.fun();...... 
+	}
+}
+class S { // SERVICE
+   R r;
+	far() {
+	  ..... r.foo(); ....
+	}
+}
+class C { // CONTROLLER
+   S s;
+	fee() {
+	  ..... s.far(); ....
+	}
+}
+C c = new C();
+c.fee();
+
+
+
+
+
+
+
+
+	
 
 
